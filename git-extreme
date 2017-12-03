@@ -15,4 +15,31 @@ main() {
   if [ "$#" -lt 1 ]; then 
     usage; exit 1
   fi
+
+  local subcommand="$1"; shift
+  
+  case $subcommand in 
+    "-h"|"--help")
+      usage; exit 0
+      ;;
+    "-v"|"--version")
+      version; exit 0
+      ;;
+  esac
+
+  local workingdir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+  
+  if [ ! -e "$workingdir/git-extreme-$subcommand" ]; then
+    usage; exit 1
+  fi
+  echo "$workingdir/git-extreme-$subcommand"
+  source "$workingdir/git-extreme-$subcommand"
+  
+  if [ ! type "cmd_$subcommand" ]; then 
+    usage; exit 1
+  fi
+
+  cmd_$subcommand "#@"
 }
+
+main "$@"

@@ -1,0 +1,11 @@
+#!usr/bin/env sh
+usage() {
+  echo "Incomplete"
+}
+
+cmd_test() {
+  if [ "$#" -lt 1 ]; then 
+    echo "Testing";exit 0
+  fi
+
+}
