@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+
+version() {
+  echo "git extreme v0.1.0"
+  echo 
+}
+
+usage() {
+  echo "This is currently being developed"
+  echo "Hang on a while"
+}
+
+main() {
+  if [ "$#" -lt 1 ]; then 
+    usage; exit 1
+  fi
+}
