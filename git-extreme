@@ -34,8 +34,10 @@ main() {
   fi
   echo "$workingdir/git-extreme-$subcommand"
   . "$workingdir/git-extreme-$subcommand"
-  
-  if [ ! type "cmd_$subcommand" ]; then 
+ 
+  echo "cmd_$subcommand"
+ 
+  if ! type "cmd_$subcommand" ; then 
     usage; exit 1
   fi
 
